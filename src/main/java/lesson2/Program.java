@@ -1,5 +1,6 @@
 package lesson2;
 
+import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
@@ -11,12 +12,16 @@ public class Program {
 
     public static void main(String[] args) {
         //showFloatNumber(); // task1
-        //task2();
-        for (int i = 0; i < 10; i++){
-            System.out.printf("\n *** Итерация %d *** \n\n", i + 1);
 
-            task3();
-        }
+        //task2();
+
+//        for (int i = 0; i < 10; i++){
+//            System.out.printf("\n *** Итерация %d *** \n\n", i + 1);
+//
+//            task3();
+//        }
+
+        task4();
     }
 
     /**
@@ -115,6 +120,50 @@ public class Program {
         return array;
     }
 
+/**
+ * Дан следующий код, исправьте его там, где требуется
+ *
+ * public static void main(String[] args) throws Exception {
+ *    try {
+ *        int a = 90;
+ *        int b = 3;
+ *        System.out.println(a / b);
+ *        printSum(23, 234);
+ *        int[] abc = { 1, 2 };
+ *        abc[3] = 9;
+ *    } catch (Throwable ex) {
+ *        System.out.println("Что-то пошло не так...");
+ *    } catch (NullPointerException ex) {
+ *        System.out.println("Указатель не может указывать на null!");
+ *    } catch (IndexOutOfBoundsException ex) {
+ *        System.out.println("Массив выходит за пределы своего размера!");
+ *    }
+ * }
+ * public static void printSum(Integer a, Integer b) throws FileNotFoundException {
+ *    System.out.println(a + b);
+ * }
+ */
+
+    static void task4() {
+        try {
+            int a = 90;
+            int b = 3;
+            System.out.println(a / b);
+            printSum(23, 234);
+            int[] abc = { 1, 2 };
+            abc[3] = 9;
+        } catch (NullPointerException ex) {
+            System.out.println("Указатель не может указывать на null!");
+        } catch (IndexOutOfBoundsException ex) {
+            System.out.println("Массив выходит за пределы своего размера!");
+        } catch (Throwable ex) {
+            System.out.println("Что-то пошло не так..."); // перенесли Throwable ниже по коду, т.к. он является родительским
+                                                        // для каждого из типов исключений
+        }
+    }
+    public static void printSum(Integer a, Integer b) throws NullPointerException { // исправили FileNotFoundException
+        System.out.println(a + b);                 // на NullPointerExceptions (в случае, если a или b будет равен null)
+    }
 
 
 
