@@ -11,8 +11,12 @@ public class Program {
 
     public static void main(String[] args) {
         //showFloatNumber(); // task1
-        task2();
+        //task2();
+        for (int i = 0; i < 10; i++){
+            System.out.printf("\n *** Итерация %d *** \n\n", i + 1);
 
+            task3();
+        }
     }
 
     /**
@@ -56,6 +60,64 @@ public class Program {
             System.out.println(string);
         }
     }
+
+
+    /**
+     *  Если необходимо, исправьте данный код
+     *
+     *  try {
+     *    int d = 0;
+     *    double catchedRes1 = intArray[8] / d;
+     *    System.out.println("catchedRes1 = " + catchedRes1);
+     * } catch (ArithmeticException e) {
+     *    System.out.println("Catching exception: " + e);
+     * }
+     *
+     */
+    static void task3(){
+        try {
+            divideArrayElem(generateArray());
+        }
+
+        catch (ArrayIndexOutOfBoundsException | ArithmeticException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    static void divideArrayElem(int[] intArray) {
+        if (intArray == null) { // если массив пуст
+            throw new NullPointerException("Массив должен быть заполнен");
+        }
+        int d = random.nextInt(10); // сделали делитель рандомным
+        int i = random.nextInt(10); // индекс массива также задаем рандомно
+        System.out.printf("Делитель: %d\nИндекс делимого: %d\n", d, i);
+        if (d == 0) { // если делитель равен нулю
+            throw new ArithmeticException("Делить на ноль нельзя!");
+        }
+        if (i >= intArray.length) { // если индекс превышает размер массива
+            throw new ArrayIndexOutOfBoundsException("Индекс массива не должен превышать размер массива");
+        }
+        else {
+            double catchedRes1 = (double) intArray[i] / d;
+            System.out.printf("%d / %d = %f\n", intArray[i], d, catchedRes1);
+        }
+    }
+
+    /**
+     * Метод генерации целочисленного массива
+     * @return Одномерный массив
+     */
+    static int[] generateArray () {
+        int [] array = new int[random.nextInt(1,10)];
+            System.out.print("Массив целых чисел: ");
+            for (int i = 0; i < array.length; i++) {
+                array[i] = random.nextInt(-10, 10);
+                System.out.printf("%d ", array[i]);
+            }
+        System.out.println();
+        return array;
+    }
+
 
 }
 
