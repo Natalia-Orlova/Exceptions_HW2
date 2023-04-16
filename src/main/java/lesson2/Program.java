@@ -85,9 +85,6 @@ public class Program {
     }
 
     static void divideArrayElem(int[] intArray) {
-        if (intArray == null) { // если массив пуст
-            throw new NullPointerException("Массив должен быть заполнен");
-        }
         int d = random.nextInt(10); // сделали делитель рандомным
         int i = random.nextInt(10); // индекс массива также задаем рандомно
         System.out.printf("Делитель: %d\nИндекс делимого: %d\n", d, i);
@@ -117,6 +114,8 @@ public class Program {
         System.out.println();
         return array;
     }
+
+
 
 
 }
